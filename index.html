@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Collection App</title>
+  <style>
+    /* Basic styling */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .movie-form, .movie-list {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>My Movie Collection</h1>
+
+  <!-- Form to add/edit movie -->
+  <div class="movie-form">
+    <h2>Add/Edit Movie</h2>
+    <input type="text" id="title" placeholder="Movie Title" required />
+    <input type="text" id="director" placeholder="Director" required />
+    <input type="number" id="year" placeholder="Year" required />
+    <button onclick="addMovie()">Add Movie</button>
+  </div>
+
+  <!-- List of movies -->
+  <div class="movie-list">
+    <h2>Movie Collection</h2>
+    <ul id="movieCollection"></ul>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
