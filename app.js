@@ -59,3 +59,12 @@ function editMovie(index) {
 
   editIndex = index; // Take note of teh movie being edited
 }
+// Delete a movie
+function deleteMovie(index) {
+  movies.splice(index, 1); // Remove a movie
+  localStorage.setItem('movies', JSON.stringify(movies)); // Save updated list
+  displayMovies(); // Refresh the list
+}
+
+// Display movies automatically
+displayMovies();
