@@ -32,7 +32,7 @@ function addMovie() {
     } else {
       // Updating an existing movie
       movies[editIndex] = newMovie;
-      editIndex = null;
+      editIndex = null
     }
 
 
