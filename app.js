@@ -17,7 +17,7 @@ function displayMovies() {
       </li>`;
   });
 }
-// Add a new movie or update an existing one
+// Add or update a movie
 function addMovie() {
   const title = document.getElementById('title').value;
   const director = document.getElementById('director').value;
@@ -27,10 +27,10 @@ function addMovie() {
     const newMovie = { title, director, year };
     
     if (editIndex === null) {
-      // Adding a new movie
+      // Add new movie
       movies.push(newMovie);
     } else {
-      // Updating an existing movie
+      // Update moviee
       movies[editIndex] = newMovie;
       editIndex = null;
     }
@@ -38,3 +38,24 @@ function addMovie() {
     // Save to localStorage and display updated list
     localStorage.setItem('movies', JSON.stringify(movies));
     displayMovies();
+
+    // Clear form
+    document.getElementById('title').value = '';
+    document.getElementById('director').value = '';
+    document.getElementById('year').value = '';
+  } else {
+    alert('Please fill in all fields');
+  }
+}
+
+// Edit a moviee
+function editMovie(index) {
+  const movie = movies[index];
+  
+  // Pre-fill already exiting date of that movie
+  document.getElementById('title').value = movie.title;
+  document.getElementById('director').value = movie.director;
+  document.getElementById('year').value = movie.year;
+
+  editIndex = index; // Take note of teh movie being edited
+}
