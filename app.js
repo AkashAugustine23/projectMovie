@@ -35,4 +35,6 @@ function addMovie() {
       editIndex = null;
     }
 
-
+    // Save to localStorage and display updated list
+    localStorage.setItem('movies', JSON.stringify(movies));
+    displayMovies();
