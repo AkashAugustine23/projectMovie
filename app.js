@@ -17,3 +17,20 @@ function displayMovies() {
       </li>`;
   });
 }
+// Add or update a movie
+function addMovie() {
+  const title = document.getElementById('title').value;
+  const director = document.getElementById('director').value;
+  const year = document.getElementById('year').value;
+
+  if (title && director && year) {
+    const newMovie = { title, director, year };
+    
+    if (editIndex === null) {
+      // Add new movie
+      movies.push(newMovie);
+    } else {
+      // Update moviee
+      movies[editIndex] = newMovie;
+      editIndex = null;
+    }
