@@ -23,3 +23,10 @@ function addMovie() {
   const director = document.getElementById('director').value;
   const year = document.getElementById('year').value;
 
+  if (title && director && year) {
+    const newMovie = { title, director, year };
+    
+    if (editIndex === null) {
+      // Add new movie
+      movies.push(newMovie);
+    } 
