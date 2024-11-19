@@ -29,4 +29,21 @@ function addMovie() {
     if (editIndex === null) {
       // Add new movie
       movies.push(newMovie);
-    } 
+    } else {
+      // Update moviee
+      movies[editIndex] = newMovie;
+      editIndex = null;
+    }
+
+    // Save to localStorage and display updated list
+    localStorage.setItem('movies', JSON.stringify(movies));
+    displayMovies();
+
+    // Clear form
+    document.getElementById('title').value = '';
+    document.getElementById('director').value = '';
+    document.getElementById('year').value = '';
+  } else {
+    alert('Please fill in all fields');
+  }
+}
