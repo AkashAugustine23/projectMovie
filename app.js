@@ -13,4 +13,4 @@ async function fetchMovies() {
   } catch (error) {
     console.error('Error fetching movies:', error);
   }
-
+}
