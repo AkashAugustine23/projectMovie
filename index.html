@@ -3,35 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie Collection App</title>
-  <script src="app.js"></script>
-  <style>
-    /* Basic styling */
-    body {
-      font-family: Arial, sans-serif;
-    }
-    .movie-form, .movie-list {
-      margin: 20px;
-    }
-  </style>
+  <title>Movie Collection</title>
 </head>
 <body>
-  <h1>Critic's List</h1>
+  <h1>Movie Collection</h1>
 
-  <!-- Form to add/edit movie -->
-  <div class="movie-form">
-    <h2>Add/Edit Movie</h2>
-    <input type="text" id="title" placeholder="Movie Title" required />
-    <input type="text" id="director" placeholder="Director" required />
-    <input type="number" id="year" placeholder="Year" required />
-    <button onclick="addMovie()">Add Movie</button>
-  </div>
+  <form id="movieForm">
+    <input type="text" id="title" placeholder="Title" required>
+    <input type="text" id="director" placeholder="Director" required>
+    <input type="number" id="year" placeholder="Year" required>
+    <button type="button" onclick="addMovie()">Add Movie</button>
+  </form>
 
-  <!-- List of movies -->
-  <div class="movie-list">
-    <h2>Movie Collection</h2>
-    <ul id="movieCollection"></ul>
-  </div>
+  <ul id="movieCollection"></ul>
 
+  <!-- Link to your script file -->
+  <script src="app.js"></script>
 </body>
 </html>
