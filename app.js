@@ -1,49 +1,16 @@
 // Select the movie collection element
 const movieCollection = document.getElementById('movieCollection');
 
-// Fetch movies from localStorage (if available)
-let movies = JSON.parse(localStorage.getItem('movies')) || [];
-let editIndex = null; // To track if a movie is being edited
+// To track if a movie is being edited
+let editIndex = null; 
 
-// Display all movies
-function displayMovies() {
-  movieCollection.innerHTML = ''; // Clear previous list
-  movies.forEach((movie, index) => {
-    movieCollection.innerHTML += `
-      <li>
-        <strong>${movie.title}</strong> by ${movie.director} (${movie.year})
-        <button onclick="editMovie(${index})">Edit</button>
-        <button onclick="deleteMovie(${index})">Delete</button>
-      </li>`;
-  });
-}
-// Add or update a movie
-function addMovie() {
-  const title = document.getElementById('title').value;
-  const director = document.getElementById('director').value;
-  const year = document.getElementById('year').value;
-
-  if (title && director && year) {
-    const newMovie = { title, director, year };
-    
-    if (editIndex === null) {
-      // Add new movie
-      movies.push(newMovie);
-    } else {
-      // Update moviee
-      movies[editIndex] = newMovie;
-      editIndex = null;
-    }
-
-    // Save to localStorage and display updated list
-    localStorage.setItem('movies', JSON.stringify(movies));
-    displayMovies();
-
-    // Clear form
-    document.getElementById('title').value = '';
-    document.getElementById('director').value = '';
-    document.getElementById('year').value = '';
-  } else {
-    alert('Please fill in all fields');
+// Fetch movies from the backend
+async function fetchMovies() {
+  try {
+    const response = await fetch('/movies'); // API call to get all movies
+    const data = await response.json();
+    displayMovies(data); // Display the movies fetched from the backend
+  } catch (error) {
+    console.error('Error fetching movies:', error);
   }
 }
