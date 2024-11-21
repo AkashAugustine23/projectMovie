@@ -24,3 +24,15 @@ db.connect((err) => {
     }
     console.log('Connected to database');
 });
+
+// Read all movies from db
+app.get('/movies', (req, res) => {
+    const sql = 'SELECT * FROM movies';
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error('Error fetching movies:', err);
+            return res.status(500).send({ error: 'Failed to fetch movies' });
+        }
+        res.send(results);
+    });
+});
