@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 //connecting to my databes in workbench
 const db = mysql.createConnection({
-    host: 'localhost',
+    host: ' 172.26.144.1',
     user: 'root',     
     password: 'akash', 
     database: 'movies_db', 
