@@ -3,7 +3,7 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-const port = 3303;
+const port = 3000;
 
 //connecting to my databes in workbench
 const db = mysql.createConnection({
