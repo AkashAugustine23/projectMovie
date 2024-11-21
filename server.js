@@ -7,7 +7,7 @@ const port = 3306;
 
 //connecting to my databes in workbench
 const db = mysql.createConnection({
-    host: '192.168.0.54',
+    host: 'localhost',
     user: 'root',     
     password: 'akash', 
     database: 'movies_db', 
