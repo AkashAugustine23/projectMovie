@@ -12,3 +12,12 @@ const db = mysql.createConnection({
     password: 'akash', 
     database: 'movies_db', 
 });
+
+// testing Connect to the database
+db.connect((err) => {
+    if (err) {
+        console.error('Database connection failed:', err.stack);
+        return;
+    }
+    console.log('Connected to database');
+});
