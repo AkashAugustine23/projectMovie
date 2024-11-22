@@ -6,3 +6,13 @@ async function fetchMovies() {
     const movies = await response.json();
     const movieList = document.getElementById('movie-list');
     movieList.innerHTML = '';
+
+    movies.forEach(movie => {
+        const movieItem = document.createElement('li');
+        movieItem.innerHTML = `
+            ${movie.title} (Directed by: ${movie.director}, Year: ${movie.release_year}, Rating: ${movie.rating})
+            <button onclick="editMovie(${movie.id})">Edit</button>
+        `;
+        movieList.appendChild(movieItem);
+    });
+}
