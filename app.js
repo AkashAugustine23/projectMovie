@@ -17,3 +17,18 @@ async function fetchMovies() {
         movieList.appendChild(movieItem);
     });
 }
+
+async function addMovie() {
+    const title = document.getElementById('title').value;
+    const director = document.getElementById('director').value;
+    const releaseYear = document.getElementById('releaseYear').value;
+    const rating = document.getElementById('rating').value;
+
+    await fetc(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ title, director, release_year: releaseYear, rating }),
+    });
+
+    fetchMovies(); // Reload the movie list after add new movie
+}
