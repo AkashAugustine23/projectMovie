@@ -40,16 +40,15 @@ app.get('/movies', (req, res) => {
     });
 });
 
-// Update a movie
-app.put('/movies/:id', (req, res) => {
-    const { id } = req.params;
+// Create a movie (add movie)
+app.post('/movies', (req, res) => {
     const { title, director, release_year, rating } = req.body;
-    const sql = 'UPDATE movies SET title = ?, director = ?, release_year = ?, rating = ? WHERE id = ?';
-    db.query(sql, [title, director, release_year, rating, id], (err) => {
+    const sql = 'INSERT INTO movies (title, director, release_year, rating) VALUES (?, ?, ?, ?)';
+    db.query(sql, [title, director, release_year, rating], (err, result) => {
         if (err) {
-            return res.status(500).send({ error: 'Failed to update movie' });
+            return res.status(500).send({ error: 'Failed to add movie' });
         }
-        res.send({ message: 'Movie updated!' });
+        res.send({ message: 'Movie added!', movieId: result.insertId });
     });
 });
 
