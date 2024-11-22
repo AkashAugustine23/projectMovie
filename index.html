@@ -4,20 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Movie Collection</title>
+  <script src="app.js"> </script>
 </head>
 <body>
-  <h1>My Top Movie Collection</h1>
-
-  <form id="movieForm">
-    <input type="text" id="title" placeholder="Title" required>
-    <input type="text" id="director" placeholder="Director" required>
-    <input type="number" id="year" placeholder="Year" required>
-    <button type="button" onclick="addMovie()">Add Movie</button>
+  <h1>Critic's Favorite Movies</h1>
+  <form onsubmit="addMovie(); return false;">
+      <input type="text" id="title" placeholder="Title" required />
+      <input type="text" id="director" placeholder="Director" />
+      <input type="number" id="releaseYear" placeholder="Release Year" />
+      <input type="number" step="0.1" id="rating" placeholder="Rating (e.g., 8.5)" />
+      <button type="submit">Add Movie</button>
   </form>
 
-  <ul id="movieCollection"></ul>
-
-  <!-- Link to your script file -->
-  <script src="app.js"></script>
+  <h2>Movie List</h2>
+  <ul id="movie-list"></ul>
 </body>
 </html>
