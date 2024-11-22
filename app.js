@@ -12,6 +12,7 @@ async function fetchMovies() {
         movieItem.innerHTML = `
             ${movie.title} (Directed by: ${movie.director}, Year: ${movie.release_year}, Rating: ${movie.rating})
             <button onclick="editMovie(${movie.id})">Edit</button>
+            <button onclick="deleteMovie(${movie.id})">Delete</button>
         `;
         movieList.appendChild(movieItem);
     });
