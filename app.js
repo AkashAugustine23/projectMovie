@@ -45,7 +45,7 @@ async function addMovie() {
 
 async function deleteMovie(id) {
     try {
-        await fetch(`${API_URL}${id}`, { method: 'DELETE' });
+        await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
         fetchMovies(); // Refresh movie list
     } catch (error) {
         console.error('Error deleting movie:', error);
