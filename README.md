@@ -21,7 +21,7 @@ added delete movie function delete movies from db
 
 
 
-
+nohup <command> &
 
 
 
