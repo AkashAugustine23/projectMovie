@@ -52,5 +52,22 @@ async function deleteMovie(id) {
     }
 }
 
+function showEditForm(id, currentTitle, currentDirector, currentYear, currentRating) {
+    const editForm = document.createElement('div');
+    editForm.innerHTML = `
+        <h3>Edit Movie</h3>
+        <input type="text" id="edit-title" value="${currentTitle}" />
+        <input type="text" id="edit-director" value="${currentDirector}" />
+        <input type="number" id="edit-releaseYear" value="${currentYear}" />
+        <input type="number" step="0.1" id="edit-rating" value="${currentRating}" />
+        <button onclick="updateMovie(${id})">Save</button>
+        <button onclick="cancelEdit()">Cancel</button>
+    `;
+
+    const movieList = document.getElementById('movie-list');
+    movieList.innerHTML = ''; // Clear movie list while editing
+    movieList.appendChild(editForm);
+}
+
 // Call fetchMovies when the page loads to show the list of movies
 document.addEventListener('DOMContentLoaded', fetchMovies);
