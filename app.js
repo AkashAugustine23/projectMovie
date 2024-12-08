@@ -74,5 +74,24 @@ function cancelEdit() {
     fetchMovies(); // Reload the movie list without making changes
 }
 
+async function updateMovie(id) {
+    const title = document.getElementById('edit-title').value;
+    const director = document.getElementById('edit-director').value;
+    const releaseYear = document.getElementById('edit-releaseYear').value;
+    const rating = document.getElementById('edit-rating').value;
+
+    try {
+        await fetch(`${API_URL}/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title, director, release_year: releaseYear, rating }),
+        });
+        fetchMovies(); // Refresh movie list
+    } catch (error) {
+        console.error('Error updating movie:', error);
+    }
+}
+
+
 // Call fetchMovies when the page loads to show the list of movies
 document.addEventListener('DOMContentLoaded', fetchMovies);
