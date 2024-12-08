@@ -69,5 +69,10 @@ function showEditForm(id, currentTitle, currentDirector, currentYear, currentRat
     movieList.appendChild(editForm);
 }
 
+
+function cancelEdit() {
+    fetchMovies(); // Reload the movie list without making changes
+}
+
 // Call fetchMovies when the page loads to show the list of movies
 document.addEventListener('DOMContentLoaded', fetchMovies);
