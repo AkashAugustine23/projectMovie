@@ -92,6 +92,7 @@ async function updateMovie(id) {
     }
 }
 
-
 // Call fetchMovies when the page loads to show the list of movies
-document.addEventListener('DOMContentLoaded', fetchMovies);
+document.addEventListener('DOMContentLoaded', () => {
+    fetchMovies();
+});
