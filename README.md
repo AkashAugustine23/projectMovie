@@ -1,5 +1,5 @@
 # projectMovie
-
+started with basic structure from stackoverflow to begin and learn 
 #server
 started using local storage but then moving to API integration
 created server test code to check connection
