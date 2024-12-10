@@ -45,6 +45,17 @@ app.get('/movies', (req, res) => {
         res.send(results);
     });
 });
+
+// Update a movie
+app.put('/movies/:id', (req, res) => {
+    const { id } = req.params;
+    const { title, director, release_year, rating } = req.body;
+    const sql = 'UPDATE movies SET title = ?, director = ?, release_year = ?, rating = ? WHERE id = ?';
+    db.query(sql, [title, director, release_year, rating, id], () => {
+        res.send({ message: 'Movie updated!' });
+    });
+});
+
 // Start server
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
