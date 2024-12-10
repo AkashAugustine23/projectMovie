@@ -56,6 +56,15 @@ app.put('/movies/:id', (req, res) => {
     });
 });
 
+// Delete a movie
+app.delete('/movies/:id', (req, res) => {
+    const { id } = req.params;
+    const sql = 'DELETE FROM movies WHERE id = ?';
+    db.query(sql, [id], () => {
+        res.send({ message: 'Movie deleted!' });
+    });
+});
+
 // Start server
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
