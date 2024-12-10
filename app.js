@@ -11,8 +11,8 @@ async function fetchMovies() {
             const movieItem = document.createElement('li');
             movieItem.innerHTML = `
                 ${movie.title} (Directed by: ${movie.director}, Year: ${movie.release_year}, Rating: ${movie.rating})
-                <button onclick="deleteMovie(${movie.id})">Delete</button>
-                <button onclick="showEditForm(${movie.id}, '${escapeString(movie.title)}', '${escapeString(movie.director)}', ${movie.release_year}, ${movie.rating})">Edit</button>
+                <button class="delete-btn" onclick="deleteMovie(${movie.id})">Delete</button>
+                <button class="edit-btn" onclick="showEditForm(${movie.id}, '${escapeString(movie.title)}', '${escapeString(movie.director)}', ${movie.release_year}, ${movie.rating})">Edit</button>
             `;
             movieList.appendChild(movieItem);
         });
@@ -63,7 +63,7 @@ function showEditForm(id, currentTitle, currentDirector, currentYear, currentRat
         <input type="number" id="edit-releaseYear" value="${currentYear}" />
         <input type="number" step="0.1" id="edit-rating" value="${currentRating}" />
         <button onclick="updateMovie(${id})">Save</button>
-        <button onclick="cancelEdit()">Cancel</button>
+        <button class="cancel-btn" onclick="cancelEdit()">Cancel</button>
     `;
 
     // Add the edit form to the DOM
