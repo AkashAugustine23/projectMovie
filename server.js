@@ -65,6 +65,11 @@ app.delete('/movies/:id', (req, res) => {
     });
 });
 
+// Handle invalid routes
+app.use((req, res) => {
+    res.status(404).send({ error: 'Route not found' });
+});
+
 // Start server
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
