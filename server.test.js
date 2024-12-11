@@ -15,7 +15,7 @@ jest.mock('mysql', () => {
 
 const mockDb = db.createPool();
 
-describe('Movie API Endpoints - POST /movies', () => {
+describe('Movie API Endpoints', () => {
     let server;  // To hold the server instance
 
     // Start the server before all tests
@@ -36,6 +36,7 @@ describe('Movie API Endpoints - POST /movies', () => {
         jest.restoreAllMocks();
     });
 
+    // Test for POST /movies - Create a new movie
     test('POST /movies - Create a new movie', async () => {
         const newMovie = {
             title: 'Inception',
@@ -57,6 +58,27 @@ describe('Movie API Endpoints - POST /movies', () => {
 
         expect(response.status).toBe(200);
         expect(response.body).toEqual({ message: 'Movie added!', movieId: 1 });
+        expect(mockDb.query).toHaveBeenCalledTimes(1);
+    });
+
+    // Test for GET /movies - Retrieve all movies
+    test('GET /movies - Retrieve all movies', async () => {
+        const mockMovies = [
+            { id: 1, title: 'Inception', director: 'Christopher Nolan', release_year: 2010, rating: 8.8 },
+            { id: 2, title: 'Interstellar', director: 'Christopher Nolan', release_year: 2014, rating: 8.6 }
+        ];
+
+        // Mock the database query
+        mockDb.query.mockImplementation((sql, callback) => {
+            expect(sql).toBe('SELECT * FROM movies');
+            callback(null, mockMovies); // Return mock movies
+        });
+
+        const response = await request(app)
+            .get('/movies');
+
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual(mockMovies); // Verify that the response body contains the mocked movies
         expect(mockDb.query).toHaveBeenCalledTimes(1);
     });
 });
