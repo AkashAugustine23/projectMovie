@@ -32,11 +32,24 @@ db.getConnection((err, connection) => {
 // Create a movie
 app.post('/movies', (req, res) => {
     const { title, director, release_year, rating } = req.body;
+
+    // Check for missing required fields
+    if (!title || !director || !release_year || !rating) {
+        return res.status(400).send({ 
+            error: 'All fields (title, director, release_year, rating) are required' 
+        });
+    }
+    
+    // If validation passes, proceed to insert the movie
     const sql = 'INSERT INTO movies (title, director, release_year, rating) VALUES (?, ?, ?, ?)';
     db.query(sql, [title, director, release_year, rating], (err, result) => {
+        if (err) {
+            return res.status(500).send({ error: 'Failed to add movie' });
+        }
         res.send({ message: 'Movie added!', movieId: result.insertId });
     });
 });
+
 
 // Read all movies from db
 app.get('/movies', (req, res) => {
