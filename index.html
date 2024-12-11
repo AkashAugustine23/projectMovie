@@ -1,22 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie Collection</title>
-  <script src="app.js"> </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACME - A Cinephile Making Enemies</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
 </head>
 <body>
-  <h1>Critic's Favorite Movies</h1>
-  <form onsubmit="addMovie(); return false;">
-      <input type="text" id="title" placeholder="Title" required />
-      <input type="text" id="director" placeholder="Director" />
-      <input type="number" id="releaseYear" placeholder="Release Year" />
-      <input type="number" step="0.1" id="rating" placeholder="Rating (e.g., 8.5)" />
-      <button type="submit">Add Movie</button>
-  </form>
+    <header class="header-outer">
+        <div class="header-inner responsive-wrapper">
+            <div class="header-logo">
+                <img src="https://assets.codepen.io/285131/acme-2.svg" />
+            </div>
+    </header>
 
-  <h2>Movie List</h2>
-  <ul id="movie-list"></ul>
+    <!-- Slideshow -->
+    <div class="slideshow-container">
+        <div class="slides">
+            <img class="slide" src="image1.jpg" alt="Image 1">
+            <img class="slide" src="images2.jpg" alt="Image 2">
+            <img class="slide" src="images3.jpg" alt="Image 3">
+            <img class="slide" src="images3.avif" alt="Image 4">
+            <img class="slide" src="images5.jpg" alt="Image 4">
+            <img class="slide" src="images6.jpeg" alt="Image 4">
+            <img class="slide" src="images7.jpg" alt="Image 4">
+            <img class="slide" src="images8.jpg" alt="Image 4">
+            <img class="slide" src="images9.jpg" alt="Image 4">
+            <img class="slide" src="images10.avif" alt="Image 4">
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Movie List -->
+        <h2>Movie List</h2>
+        <ul id="movie-list">
+            <li>
+                <button>Server File Not Loaded!!!!!!!!!!!!!</button>
+       
+             </li>
+        </ul>
+        
+        <h2>Add Movie</h2>
+
+                <!-- Add Movie Form -->
+                <form onsubmit="addMovie(); return false;">
+                    <input type="text" id="title" placeholder="Title" required />
+                    <input type="text" id="director" placeholder="Director" />
+                    <input type="number" id="releaseYear" placeholder="Release Year" />
+                    <input type="number" step="0.1" id="rating" placeholder="Rating (e.g., 8.5)" />
+                    <button type="submit">Add Movie</button>
+                </form>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>Contact Us | Disclaimer</p>
+    </footer>
 </body>
 </html>
