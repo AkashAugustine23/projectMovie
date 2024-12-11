@@ -61,6 +61,26 @@ describe('Movie API Endpoints', () => {
         expect(mockDb.query).toHaveBeenCalledTimes(1);
     });
 
+    // Test Case 2: POST /movies - Missing required fields (validation error)
+    test('POST /movies - Missing required fields', async () => {
+        const newMovie = { 
+            title: '', 
+            director: '', 
+            release_year: '', 
+            rating: '' 
+        };
+    
+        const response = await request(app)
+            .post('/movies')
+            .send(newMovie);
+    
+        expect(response.status).toBe(400);
+        expect(response.body).toEqual({ 
+            error: 'All fields (title, director, release_year, rating) are required' 
+        });
+    });
+    
+
     // Test for GET /movies - Retrieve all movies
     test('GET /movies - Retrieve all movies', async () => {
         const mockMovies = [
