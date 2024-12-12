@@ -87,3 +87,31 @@ app.use((req, res) => {
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
+
+const startServer = () => {
+    return new Promise((resolve, reject) => {
+        const server = app.listen(port, () => {
+            console.log(`Server running on http://localhost:${server.address().port}`); // Log the dynamically assigned port
+            resolve(server);  // Resolve the server once it has started
+        });
+        server.on('error', reject);  // Reject if there's an error starting the server
+    });
+};
+
+const stopServer = (server) => {
+    return new Promise((resolve, reject) => {
+        if (server) {
+            server.close((err) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve();
+                }
+            });
+        } else {
+            reject(new Error('Server not initialized.'));
+        }
+    });
+};
+
+module.exports = { app, startServer, stopServer };
