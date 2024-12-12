@@ -1,5 +1,5 @@
 const request = require('supertest');
-const { app, startServer, stopServer } = require('../completeServer');
+const { app, startServer, stopServer } = require('./completeServer');
 
 let server;
 
