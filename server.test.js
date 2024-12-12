@@ -1,5 +1,5 @@
 const request = require('supertest'); // To test HTTP requests
-const { app, startServer, stopServer } = require('../completeServer'); // Import the Express app with server controls
+const { app, startServer, stopServer } = require('../completeServer'); // changing file name to match with git files and import correct express app
 const db = require('mysql'); // Mock MySQL
 
 // Mock the database connection
@@ -80,6 +80,27 @@ describe('Movie API Endpoints', () => {
         });
     });
     
+        // Test Case 3: POST /movies - Database failure (simulating a database error)
+        test('POST /movies - Database failure', async () => {
+            const newMovie = {
+                title: 'Inception',
+                director: 'Christopher Nolan',
+                release_year: 2010,
+                rating: 8.8,
+            };
+    
+            // Mock the database query to simulate a failure
+            mockDb.query.mockImplementation((sql, params, callback) => {
+                callback(new Error('Database error'));  // Simulate database error
+            });
+    
+            const response = await request(app)
+                .post('/movies')
+                .send(newMovie);
+    
+            expect(response.status).toBe(500); // Internal Server Error
+            expect(response.body).toEqual({ error: 'Failed to add movie' });
+        });    
 
     // Test for GET /movies - Retrieve all movies
     test('GET /movies - Retrieve all movies', async () => {
