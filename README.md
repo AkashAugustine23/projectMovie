@@ -31,8 +31,7 @@ decided to use dynamic port allocation for testing as solution ((referred stacko
 but the page was not running locally with dynamic port allocation even after making changes to app.js to get the dynamic port and listen to it. hence running on two ports.
 
 #integration testing
-
-#deployment
+used jest for integration testing
 
 
 
