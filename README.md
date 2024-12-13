@@ -34,4 +34,10 @@ but the page was not running locally with dynamic port allocation even after mak
 used jest for integration testing
 
 
-
+#adding references 
+https://www.geeksforgeeks.org/movie-search-application-using-javascript/
+https://stackoverflow.com/questions/42228068/imagine-you-have-a-movie-collection-and-you-want-to-write-code-that-returns-you
+https://stackoverflow.com/questions/857670/how-to-connect-to-sql-server-database-from-javascript-in-the-browser
+https://hevodata.com/learn/javascript-mysql/#:~:text=Create%20a%20new%20file%20named%20%E2%80%9Capp.&text=const%20mysql%20%3D%20require('mysql,Database')%3B%20return%3B%20%7D%20console.
+https://freefrontend.com/css-headers/      
+https://getcssscan.com/css-buttons-examples
