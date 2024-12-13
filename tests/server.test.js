@@ -1,5 +1,5 @@
 const request = require('supertest'); // To test HTTP requests
-const { app, startServer, stopServer } = require('./completeServer'); // changing file name to match with git files and import correct express app
+const { app, startServer, stopServer } = require('../server'); // changing file name to match with git files and import correct express app
 const db = require('mysql'); // Mock MySQL
 
 // Mock the database connection
